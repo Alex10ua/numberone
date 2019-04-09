@@ -1,17 +1,20 @@
 import scrapy
+from pip._internal.utils import logging
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import Rule
 
-class EkSpider(scrapy.Spider):
-    name = "Ek"
+class Spider(scrapy.Spider):
+    name = "Coin"
 
-    def start_requests(self):
-        url=['https://ek.ua/list/122/xiaomi/']
-        allowed_domains=['ek.ua']
+    url=['https://coinmarketcap.com/ru/all/views/all/']
+    start_urls=['https://coinmarketcap.com/ru/']
 
-        rule=(
-            Rule(LinkExtractor(
-                restrict_xpaths=['//*[@id="mr_g1tge6zf762"]/table  ']
-            )
-            )
-        )
+    custom_settings = {
+        'LOG_LEVEL': logging.WARNING,
+        'ITEM_PIPELINES':{'__main__.JsonWriterPipeline':1},
+        'FEED_FORMAT':'json',
+        'FEED_URI':'data.json'
+    }
+    def parse(self, response):
+        for ood in  response.css()
+
