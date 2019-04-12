@@ -2,15 +2,15 @@ import scrapy
 from pip._internal.utils import logging
 from scrapy import Selector
 from scrapy.linkextractors import LinkExtractor
-from scrapy.spiders import Rule
+from scrapy.spiders import Spider
 
 from numberone.items import EkItem
 
 
-class Spider(scrapy.Spider):
+class eKSpider(Spider):
     name = "Phone"
 
-    url=['https://ek.ua/XIAOMI-MI-9-64GB.htm','https://ek.ua/list/122/xiaomi/']
+    #url=['https://ek.ua/XIAOMI-MI-9-64GB.htm','https://ek.ua/list/122/xiaomi/']
     #start_urls=['https://coinmarketcap.com/ru/']
     start_urls=['https://ek.ua/XIAOMI-MI-9-64GB.htm']
 
