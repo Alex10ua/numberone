@@ -32,12 +32,28 @@ class eKSpider(Spider):
                 item=EkItem()
                 item['Title']=info.xpath('//h1[@class="t2 no-mobile"]/text()').extract()
                 item['MemorySize']=info.xpath('//h1[@class="t2 no-mobile"]/span/text()').extract()
-                # item['LowPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[1]/text()').extract()
-                #item['HighPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[2]').extract()
-                #item['DiapasonofPrice']=('//div[@class="desc-big-price ib"]')
-                #item['NameShop']=()
-                #item['CurrencyofPrice']=('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[3]').extract()
+                item['LowPrice']=info.xpath('//div[@class="desc-big-price ib"]/span[@itemprop="lowPrice"]/text()').extract()
+                item['HighPrice']=info.xpath('//div[@class="desc-big-price ib"]/span[@itemprop="highPrice"]/text()').extract()
+                item['CurrencyofPrice']=info.xpath('//div[@class="desc-big-price ib"]//span[@class="desc-pr-cur"]/text()').extract()
+                item['ShopsName1']=info.xpath('//tr[@class="  tr-odd"]//a[@class="it-shop"]/text()').extract()
+                item['ShopsName2']=info.xpath('//tr[@class="  tr-odd"][2]//a[@class="it-shop"]/text()').extract()
+                item['ShopsName3']=info.xpath('//tr[@class="  tr-odd"][3]//a[@class="it-shop"]/text()').extract()
+                item['ShopsName4']=info.xpath('//tr[@class=" "]//a[@class="it-shop"]/text()').extract()
+                item['ShopsName5']=info.xpath('//tr[@class=" "][2]//a[@class="it-shop"]/text()').extract()
+                item['ShopsName1Price']=info.xpath('//tr[@class="  tr-odd"]/td[@class="where-buy-price"]/a/text()').extract()
+                item['ShopsName2Price']=info.xpath('//tr[@class="  tr-odd"][2]/td[@class="where-buy-price"]/a/text()').extract()
+                item['ShopsName3Price']=info.xpath('//tr[@class="  tr-odd"][3]/td[@class="where-buy-price"]/a/text()').extract()
+                item['ShopsName4Price']=info.xpath('//tr[@class=" "]/td[@class="where-buy-price"]/a/text()').extract()
+                item['ShopsName5Price']=info.xpath('//tr[@class=" "][2]/td[@class="where-buy-price"]/a/text()').extract()
+                #item['ShopsName1Discription']=info.xpath('//tr[@class="  tr-odd"]//td[@class="where-buy-price"]//h3[1]/text()').extract()
+                #item['ShopsName2Discription']=info.xpath('').extract()
+                #item['ShopsName3Discription']=info.xpath('').extract()
+                #item['ShopsName4Discription']=info.xpath('').extract()
+                #item['ShopsName5Discription']=info.xpath('').extract()
+
+
+
                 yield item
 
-###scrapy crawl Phone -o  smartInformation.csv -t csv
+####scrapy crawl Phone -o  smartInformation.csv -t csv
 ####scrapy crawl Phone -o info.json
