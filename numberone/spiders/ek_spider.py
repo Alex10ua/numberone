@@ -1,8 +1,12 @@
+from fileinput import filename
+
 import scrapy
 from pip._internal.utils import logging
 from scrapy import Selector
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import Spider
+from scrapy import spiders
+from scrapy import Spider
 
 from numberone.items import EkItem
 
@@ -23,14 +27,16 @@ class eKSpider(Spider):
     #}
     def parse(self, response):
         root =Selector(response)
-        smartphone=root.xpath('//div[@class="nt wide-view page-item page-item--desc body-side-closed"]')
+        smartphone=root.xpath('//td[@class="main-part-content"]')
         for info in smartphone:
                 item=EkItem()
-                item['Title']=info.xpath('//h1[@class="t2 no-mobile"]').extract()
-                item['LowPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[1]').extract()
-                item['HighPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[2]').extract()
+                item['Title']=info.xpath('//h1[@class="t2 no-mobile"]/text()').extract()
+                item['MemorySize']=info.xpath('//h1[@class="t2 no-mobile"]/span/text()').extract()
+                # item['LowPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[1]/text()').extract()
+                #item['HighPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[2]').extract()
                 #item['DiapasonofPrice']=('//div[@class="desc-big-price ib"]')
                 #item['NameShop']=()
-                item['CurrencyofPrice']=('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[3]').extract()
+                #item['CurrencyofPrice']=('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[3]').extract()
                 yield item
+
 
