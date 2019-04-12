@@ -39,4 +39,5 @@ class eKSpider(Spider):
                 #item['CurrencyofPrice']=('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[3]').extract()
                 yield item
 
-
+###scrapy crawl Phone -o  smartInformation.csv -t csv
+####scrapy crawl Phone -o info.json
