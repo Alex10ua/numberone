@@ -1,20 +1,36 @@
 import scrapy
 from pip._internal.utils import logging
+from scrapy import Selector
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import Rule
 
+from numberone.items import EkItem
+
+
 class Spider(scrapy.Spider):
-    name = "Coin"
+    name = "Phone"
 
-    url=['https://coinmarketcap.com/ru/all/views/all/']
-    start_urls=['https://coinmarketcap.com/ru/']
+    url=['https://ek.ua/XIAOMI-MI-9-64GB.htm','https://ek.ua/list/122/xiaomi/']
+    #start_urls=['https://coinmarketcap.com/ru/']
+    start_urls=['https://ek.ua/XIAOMI-MI-9-64GB.htm']
 
-    custom_settings = {
-        'LOG_LEVEL': logging.WARNING,
-        'ITEM_PIPELINES':{'__main__.JsonWriterPipeline':1},
-        'FEED_FORMAT':'json',
-        'FEED_URI':'data.json'
-    }
+
+    # custom_settings = {
+    #    'LOG_LEVEL': logging.WARNING,
+    #   'ITEM_PIPELINES':{'__main__.JsonWriterPipeline':1},
+    #   'FEED_FORMAT':'json',
+    #   'FEED_URI':'data.json'
+    #}
     def parse(self, response):
-        for ood in  response.css()
+        root =Selector(response)
+        smartphone=root.xpath('//div[@class="nt wide-view page-item page-item--desc body-side-closed"]')
+        for info in smartphone:
+                item=EkItem()
+                item['Title']=info.xpath('//h1[@class="t2 no-mobile"]').extract()
+                item['LowPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[1]').extract()
+                item['HighPrice']=info.xpath('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[2]').extract()
+                #item['DiapasonofPrice']=('//div[@class="desc-big-price ib"]')
+                #item['NameShop']=()
+                item['CurrencyofPrice']=('/html/body/div[7]/table/tbody/tr/td[1]/table/tbody/tr/td[2]/div/div/a/div/span[3]').extract()
+                yield item
 

@@ -9,8 +9,13 @@ import scrapy
 
 
 class EkItem(scrapy.item):
-    url = scrapy.Field()
+    #url = scrapy.Field()
     Title = scrapy.Field()
-    NameShop= scrapy.Field()
-    ShopUrl=scrapy.Field()
-    PriceofItem=scrapy.Field()
+    #NameShop= scrapy.Field()
+    #ShopUrl=scrapy.Field()
+    #DiapasonofPrice=scrapy.Field()
+    LowPrice=scrapy.Field()
+    HighPrice=scrapy.Field()
+    CurrencyofPrice=scrapy.Field()
+    #PriceofPhoneInShop=scrapy.Field()
+    pass
