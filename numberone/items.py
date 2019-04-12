@@ -8,7 +8,7 @@
 import scrapy
 
 
-class EkItem(scrapy.item):
+class EkItem(scrapy.Item):
     #url = scrapy.Field()
     Title = scrapy.Field()
     #NameShop= scrapy.Field()
