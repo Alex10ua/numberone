@@ -11,6 +11,7 @@ import scrapy
 class EkItem(scrapy.Item):
     #url = scrapy.Field()
     Title = scrapy.Field()
+    MemorySize=scrapy.Field()
     #NameShop= scrapy.Field()
     #ShopUrl=scrapy.Field()
     #DiapasonofPrice=scrapy.Field()
