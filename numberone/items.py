@@ -31,16 +31,12 @@ class EkItem(scrapy.Item):
     ShopsName5Discription=scrapy.Field()
 
     AllProductName1=scrapy.Field()
-    AllProductName2=scrapy.Field()
-    AllProductName3=scrapy.Field()
-    AllProductName4=scrapy.Field()
-    AllProductName5=scrapy.Field()
-    AllProductName6=scrapy.Field()
-    AllProductName7=scrapy.Field()
     AllProductLowPrice1=scrapy.Field()
     AllProductHighPrice1=scrapy.Field()
     AllProductShopName1=scrapy.Field()
     AllProductShopPrice1=scrapy.Field()
+    AllProductTAG=scrapy.Field()
+
 
 
     # ShopUrl=scrapy.Field()
