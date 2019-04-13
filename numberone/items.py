@@ -37,7 +37,10 @@ class EkItem(scrapy.Item):
     AllProductShopPrice1=scrapy.Field()
     AllProductTAG=scrapy.Field()
 
-
+    SitiPhoneName=scrapy.Field()
+    SitiPhonePrice=scrapy.Field()
+    SitiPhonePriceChanged=scrapy.Field()
+    SitiAll=scrapy.Field()
 
     # ShopUrl=scrapy.Field()
     pass
