@@ -6,6 +6,7 @@
 # https://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy.loader import ItemLoader
 
 
 class EkItem(scrapy.Item):
@@ -30,13 +31,20 @@ class EkItem(scrapy.Item):
     ShopsName4Discription=scrapy.Field()
     ShopsName5Discription=scrapy.Field()
 
+    Shop1_array=scrapy.Field()
+    Shop2_array=scrapy.Field()
+    Shop3_array=scrapy.Field()
+    Shop4_array=scrapy.Field()
+    Shop5_array=scrapy.Field()
+
     AllProductName1=scrapy.Field()
     AllProductLowPrice1=scrapy.Field()
     AllProductHighPrice1=scrapy.Field()
     AllProductShopName1=scrapy.Field()
     AllProductShopPrice1=scrapy.Field()
     AllProductTAG=scrapy.Field()
-
+    pass
+class SitiPhone(scrapy.Item):
     SitiPhoneName=scrapy.Field()
     SitiPhonePrice=scrapy.Field()
     SitiPhonePriceChanged=scrapy.Field()
@@ -44,3 +52,6 @@ class EkItem(scrapy.Item):
 
     # ShopUrl=scrapy.Field()
     pass
+
+class Loader(ItemLoader):
+    default_item_class = SitiPhone
