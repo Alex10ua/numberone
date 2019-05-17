@@ -55,3 +55,9 @@ class SitiPhone(scrapy.Item):
 
 class Loader(ItemLoader):
     default_item_class = SitiPhone
+
+class HotlineItem(scrapy.Item):
+    Hot_name= scrapy.Field()
+    Hot_price=scrapy.Field()
+    Hot_lowest_price_and_highest_price=scrapy.Field()
+    pass
