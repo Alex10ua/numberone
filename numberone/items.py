@@ -50,7 +50,7 @@ class SitiPhone(scrapy.Item):
     SitiPhonePriceChanged=scrapy.Field()
     SitiAll=scrapy.Field()
 
-    # ShopUrl=scrapy.Field()
+
     pass
 
 class Loader(ItemLoader):

@@ -14,17 +14,11 @@ from numberone.items import EkItem
 class eKSpider(Spider):
     name = "Phone"
 
-    #url=['https://ek.ua/XIAOMI-MI-9-64GB.htm','https://ek.ua/list/122/xiaomi/']
-    #start_urls=['https://coinmarketcap.com/ru/']
+
     start_urls=['https://ek.ua/XIAOMI-MI-9-64GB.htm']
 
 
-    # custom_settings = {
-    #    'LOG_LEVEL': logging.WARNING,
-    #   'ITEM_PIPELINES':{'__main__.JsonWriterPipeline':1},
-    #   'FEED_FORMAT':'json',
-    #   'FEED_URI':'data.json'
-    #}
+
     def parse(self, response):
         root =Selector(response)
         smartphone=root.xpath('//td[@class="main-part-content"]')
@@ -45,11 +39,6 @@ class eKSpider(Spider):
                 item['ShopsName3Price']=info.xpath('//tr[@class="  tr-odd"][3]/td[@class="where-buy-price"]/a[1]/text()').extract()
                 item['ShopsName4Price']=info.xpath('//tr[@class=" "]/td[@class="where-buy-price"]/a[1]/text()').extract()
                 item['ShopsName5Price']=info.xpath('//tr[@class=" "][2]/td[@class="where-buy-price"]/a[1]/text()').extract()
-                #item['ShopsName1Discription']=info.xpath('//tr[@class="  tr-odd"]//td[@class="where-buy-price"]//h3[1]/text()').extract()
-                #item['ShopsName2Discription']=info.xpath('').extract()
-                #item['ShopsName3Discription']=info.xpath('').extract()
-                #item['ShopsName4Discription']=info.xpath('').extract()
-                #item['ShopsName5Discription']=info.xpath('').extract()
 
 
 
